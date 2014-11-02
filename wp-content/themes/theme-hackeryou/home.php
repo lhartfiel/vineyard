@@ -1,13 +1,17 @@
-<?php //index.php is the last resort template, if no other templates match ?>
 <?php get_header(); ?>
 
 <div class="main clearfix">
   <div class="container">
 
-    <div class="content">
-    		<?php get_template_part( 'loop', 'index' );	?>
+    <div class="content blogIndex" >
+    	<?php get_template_part( 'loop', 'index' ); ?>
 
+    	</div><!-- end #category-name -->
+
+    	<!-- The Loop -->
     		
+
+    </div> <!--/.content -->
 
     <?php get_sidebar(); ?>
 

@@ -39,6 +39,7 @@ endif;
 add_action( 'after_setup_theme', 'theme_setup' );
 
 
+
 /* Add all our JavaScript files here.
 We'll let WordPress add them to our templates automatically instead
 of writing our own script tags in the header and footer. */
@@ -74,11 +75,37 @@ function hackeryou_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'hackeryou_scripts' );
 
+add_action("wp_enqueue_scripts", "my_jquery_enqueue", 11);
+
+function my_jquery_enqueue() {
+   wp_deregister_script('jquery');
+   wp_register_script('jquery', "http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js", false, null, true);
+   wp_enqueue_script('jquery');
+}
+
+
+function the_titlesmall($before = '', $after = '', $echo = true, $length = false) { $title = get_the_title();
+
+	if ( $length && is_numeric($length) ) {
+		$title = substr( $title, 0, $length );
+	}
+
+	if ( strlen($title)> 0 ) {
+		$title = apply_filters('the_titlesmall', $before . $title . $after, $before, $after);
+		if ( $echo )
+			echo $title;
+		else
+			return $title;
+	}
+}
+
 
 /* Custom Title Tags */
 
 function hackeryou_wp_title( $title, $sep ) {
 	global $paged, $page;
+
+
 
 	if ( is_feed() ) {
 		return $title;
@@ -113,10 +140,10 @@ add_filter( 'wp_page_menu_args', 'hackeryou_page_menu_args' );
 
 
 /*
- * Sets the post excerpt length to 40 characters.
+ * Sets the post excerpt length to 25 characters.
  */
 function hackeryou_excerpt_length( $length ) {
-	return 40;
+	return 25;
 }
 add_filter( 'excerpt_length', 'hackeryou_excerpt_length' );
 
@@ -266,3 +293,39 @@ function get_post_parent($post) {
 		return $post->ID;
 	}
 }
+
+// Custom header
+
+$defaults = array(
+	'height' => '550px',
+	'default-image' => get_template_directory_uri() . '/img/header.jpg',
+	'uploads' => true,
+	'header-text' => true,
+	'random-default' => false
+);
+add_theme_support( 'custom-header', $defaults );
+
+
+// For custom image size selection
+// if(function_exists('add_image_size')) {
+// 	add_image_size('new-size', 400, 300, true);
+// }
+// add_filter('image_size_names_choose', 'my_image_sizes');
+
+// function my_image_sizes($sizes) {
+// 	$addsizes = array(
+// 		"new-size" => __("New Size")
+// 	);
+// 	$newsizes = array_merge($sizes, $addsizes);
+// 	return $newsizes;
+// }
+
+// Featured Image Sizes
+add_theme_support ('post-thumbnails');
+set_post_thumbnail_size(400, 250, false);
+
+// allow SVG uploads
+add_filter('upload_mimes', 'custom_upload_mimes');
+function custom_upload_mimes ( $existing_mimes=array() ) {
+	$existing_mimes['svg'] = 'mime/type';
+	return $existing_mimes;}
