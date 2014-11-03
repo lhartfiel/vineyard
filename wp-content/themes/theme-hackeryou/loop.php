@@ -61,4 +61,4 @@
   <p class="alignright"><?php previous_posts_link('Newer Entries &raquo;'); ?></p>
 <?php endif; ?>
 
-<?php //if ( function_exists( 'soliloquy' ) ) { soliloquy( '69' ); }; ?>
+

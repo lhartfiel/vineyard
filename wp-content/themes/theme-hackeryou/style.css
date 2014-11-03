@@ -209,6 +209,11 @@ img {
 
 a {
   text-decoration: none;
+  color: #716148;
+  font-weight: 400;
+}
+a:hover {
+  color: #99805F;
 }
 
 /* Global Classes / Wordpress Specific */
@@ -367,7 +372,7 @@ pre {
 }
 
 /* =============================================================================
-               Header
+               Front-Page Header
    ========================================================================== */
 .headContain {
   position: relative;
@@ -412,9 +417,6 @@ ul.menu li {
   margin-right: 10px;
   position: relative;
 }
-ul.menu li a {
-  text-decoration: none;
-}
 ul.menu li ul {
   background: #716148;
   display: none;
@@ -423,6 +425,7 @@ ul.menu li ul {
   padding: 0;
   width: 180px;
   top: 32px;
+  left: 0;
   background-image: url("img/backgroundTexture.jpg");
 }
 ul.menu li ul li {
@@ -440,9 +443,16 @@ ul.menu li ul li a {
 ul.menu li a {
   font-family: 'Cinzel';
   color: #333;
+  text-decoration: none;
   padding: 10px;
   color: white;
-  z-index: 999;
+}
+ul.menu li a:hover {
+  color: #BF913D;
+}
+ul.menu li a:focus {
+  border-bottom: 1px solid #fff;
+  color: #BF913D;
 }
 
 .headerImg {
@@ -572,12 +582,22 @@ ul.menu li a {
   }
 }
 /* =============================================================================
+                   Single Page Header
+   ========================================================================== */
+.generalPgHeader {
+  max-height: 400px;
+  overflow: hidden;
+  border-bottom: 2px solid #716148;
+}
+.generalPgHeader img {
+  width: 100%;
+  position: relative;
+}
+
+/* =============================================================================
                    Buttons
    ========================================================================== */
 .headBtn {
-  font-family: 'Cinzel';
-  font-size: 1.5em;
-  padding: 5px 0;
   color: #fff;
   border-left: 0;
   border-right: 0;
@@ -587,16 +607,28 @@ ul.menu li a {
   text-align: center;
   margin: 5px auto;
 }
+.headBtn h3 {
+  font-family: 'Cinzel';
+  font-size: 1.5em;
+  padding: 5px 0;
+  font-weight: 400;
+  margin: 0;
+}
+.headBtn h3 a {
+  color: #fff;
+}
 
 @media all and (max-width: 900px) {
-  .headBtn {
+  .headBtn h3 {
     font-size: 1.3em;
   }
 }
 @media all and (max-width: 700px) {
   .headBtn {
-    font-size: 1.1em;
     margin: 0px auto;
+  }
+  .headBtn h3 {
+    font-size: 1.1em;
   }
 }
 /* =============================================================================
@@ -647,127 +679,13 @@ ul.menu li a {
 }
 
 /* =============================================================================
-                   Comment Styling
-   ========================================================================== */
-#comments .navigation {
-  padding: 0 0 18px;
-}
-
-h3#comments-title, h3#reply-title {
-  color: #000000;
-  font-weight: 700;
-  font-size: 20px;
-  margin-bottom: 0;
-}
-
-h3#comments-title {
-  padding: 24px 0;
-}
-
-.commentlist li.comment {
-  border-bottom: 1px solid #e7e7e7;
-  line-height: 24px;
-  position: relative;
-  clear: both;
-  margin: 0 0 24px;
-  padding: 0 0 0 56px;
-}
-
-.commentlist li:last-child {
-  border-bottom: none;
-  margin-bottom: 0;
-}
-
-#comments .comment-body ul, #comments .comment-body ol {
-  margin-bottom: 18px;
-}
-
-#comments .comment-body p:last-child {
-  margin-bottom: 6px;
-}
-
-#comments .comment-body blockquote p:last-child {
-  margin-bottom: 24px;
-}
-
-.commentlist ol {
-  list-style: decimal;
-}
-
-.commentlist .avatar {
-  position: absolute;
-  top: 4px;
-  left: 0;
-}
-
-.comment-author cite {
-  color: #000000;
-  font-style: normal;
-  font-weight: 700;
-}
-
-.comment-author .says {
-  font-style: italic;
-}
-
-.comment-meta {
-  font-size: 12px;
-  margin: 0 0 5px;
-}
-
-.comment-meta a:link, .comment-meta a:visited {
-  color: #888888;
-  text-decoration: none;
-}
-
-.reply {
-  font-size: 12px;
-  padding: 0 0 24px;
-}
-
-.reply a, a.comment-edit-link {
-  color: #888888;
-}
-
-.commentlist .children li {
-  border: none;
-  margin: 0;
-}
-
-#comments .pingback {
-  margin-bottom: 18px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid #e7e7e7;
-}
-
-.commentlist li.comment + li.pingback {
-  margin-top: -6px;
-}
-
-#comments .pingback p {
-  color: #888888;
-  font-size: 12px;
-  line-height: 18px;
-  display: block;
-  margin: 0;
-}
-
-#comments .pingback .url {
-  font-style: italic;
-  font-size: 13px;
-}
-
-input[type=submit] {
-  color: #333333;
-}
-
-/* =============================================================================
                    Homepage Styling
    ========================================================================== */
 .main {
   background: rgba(255, 255, 255, 0.8);
   margin: 0;
   flex: 1;
+  padding-bottom: 40px;
 }
 .main h2 {
   margin-top: 0;
@@ -787,11 +705,13 @@ input[type=submit] {
   display: block;
 }
 .homeIntro p {
-  font-size: 22px;
+  color: #716148;
+  font-size: 20px;
   padding-bottom: 20px;
 }
 .homeIntro h2 {
   position: relative;
+  overflow: hidden;
   font-size: 2.5em;
   font-weight: 400;
   text-transform: uppercase;
@@ -799,11 +719,22 @@ input[type=submit] {
   margin-top: 0;
   padding-top: 55px;
 }
+.homeIntro h2:before, .homeIntro h2:after {
+  background: #716148;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+.homeIntro h2:after {
+  left: 15px;
+  margin-right: -50%;
+}
 .homeIntro h2:before {
-  position: absolute;
-  right: 100%;
-  margin-right: 0;
-  border-bottom: 1px solid #716148;
+  right: 15px;
+  margin-left: -50%;
 }
 
 .homeImages {
@@ -886,6 +817,19 @@ input[type=submit] {
   width: 75%;
   margin: 0 auto;
   padding-bottom: 30px;
+  margin-top: 60px;
+}
+.singleBody h2 {
+  position: absolute;
+  top: 230px;
+  left: 66px;
+  width: 40%;
+  text-align: center;
+  font-family: 'Cinzel';
+  font-weight: 400;
+  font-size: 2.7em;
+  color: #fff;
+  text-shadow: 2px 2px 2px black;
 }
 .singleBody img {
   border: 7px solid #fff;
@@ -894,6 +838,24 @@ input[type=submit] {
   margin: 10px;
 }
 
+@media all and (max-width: 700px) {
+  .singleBody h2 {
+    width: 46%;
+    font-size: 2.2em;
+  }
+}
+@media all and (max-width: 600px) {
+  .singleBody h2 {
+    width: 80%;
+    top: 150px;
+    left: 0;
+  }
+}
+@media all and (max-width: 450px) {
+  .singleBody h2 {
+    font-size: 2em;
+  }
+}
 /* =============================================================================
                   Wine Types Page
    ========================================================================== */
@@ -901,6 +863,18 @@ input[type=submit] {
   width: 75%;
   margin: 0 auto;
   padding-bottom: 30px;
+}
+.wine-types h2 {
+  position: absolute;
+  top: 230px;
+  left: 66px;
+  width: 40%;
+  text-align: center;
+  font-family: 'Cinzel';
+  font-weight: 400;
+  font-size: 2.7em;
+  color: #fff;
+  text-shadow: 2px 2px 2px black;
 }
 .wine-types .content {
   width: 100%;
@@ -917,6 +891,13 @@ input[type=submit] {
 /* =============================================================================
                   Blog Index Pages
    ========================================================================== */
+.blog-home-page .generalPgHeader {
+  border-bottom: 0px;
+}
+.blog-home-page img {
+  border-bottom: 2px solid #716148;
+}
+
 .blogIndex {
   background: rgba(255, 255, 255, 0.4);
   margin: 0;
@@ -977,6 +958,7 @@ input[type=submit] {
   width: 100%;
   overflow: hidden;
   margin-bottom: -4px;
+  border-bottom: 0;
 }
 .newsContainer h3 a {
   font-size: 1em;
@@ -1186,13 +1168,6 @@ footer {
   margin: 0 auto;
   position: relative;
 }
-.footContain h5 {
-  margin: 0;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  font-family: 'News Cycle', serif;
-  font-weight: 400;
-}
 .footContain p {
   line-height: 1.4;
   margin-bottom: 0;
@@ -1207,9 +1182,14 @@ footer {
   text-align: center;
   left: 0;
   right: 0;
-  top: -15px;
+  top: -62px;
+  margin: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .footSubhead h5 {
+  font-family: 'News Cycle', serif;
+  font-weight: 400;
   display: inline-block;
   background: #8C6C6C;
   box-shadow: 2px 2px 5px black;
@@ -1223,15 +1203,17 @@ footer {
 .foot-hours,
 .foot-social {
   float: left;
-  margin-top: 46px;
+  margin-top: 4px;
   width: 33.3%;
   opacity: 0.7;
 }
 .foot-location h5,
 .foot-hours h5,
 .foot-social h5 {
-  font-family: 'Cinzel', serif;
+  font-family: 'News Cycle', serif;
   font-weight: 400;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
 }
 
 .copyright {
@@ -1239,10 +1221,13 @@ footer {
   display: block;
   text-align: center;
   opacity: 0.9;
+  margin-top: 25px;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 .copyright p {
   margin: 0 auto;
   padding: 5px 0px;
+  color: rgba(255, 255, 255, 0.4);
 }
 
 @media all and (max-width: 500px) {
@@ -1255,6 +1240,17 @@ footer {
   .footContain p {
     font-size: 14px;
   }
+}
+/* =============================================================================
+                 Widgets
+   ========================================================================== */
+#wp-calendar {
+  color: #716148;
+  margin: auto;
+}
+#wp-calendar caption {
+  padding-bottom: 10px;
+  font-weight: 700;
 }
 
 /*# sourceMappingURL=style.css.map */

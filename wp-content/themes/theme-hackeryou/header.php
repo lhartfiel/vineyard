@@ -35,18 +35,6 @@
         )); ?>
       </div>
     </nav>
-    <div class="headerImg">
-  
-      <!-- Pulls images from Soliloquy plugin -->
-      <?php if ( function_exists( 'soliloquy' ) ) { soliloquy( '69' ); }; ?>
-
-      <div class="textOverlay">
-             <h2><?php echo get_option( 'blogname' ); ?></h2>
-             <h3 class="headerSubhead">From the vine to your table. Our family of wine growers has spent years refining our process to ensure you receive the finest, richest flavor imaginable.</h3>
-             <button class="headBtn">Taste the difference.</button>
-      </div> <!-- .textOverlay -->
-           <!-- <img src="<?php header_image(); ?>">  -->
-         </div>
   
   </div> <!-- /.headContain -->
 </header><!--/.header-->

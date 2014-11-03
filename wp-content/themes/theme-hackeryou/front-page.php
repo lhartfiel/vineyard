@@ -1,6 +1,19 @@
 <?php get_header();  ?>
 
 <div class="main">
+  <div class="headerImg">
+  
+    <!-- Pulls images from Soliloquy plugin -->
+    <?php if ( function_exists( 'soliloquy' ) ) { soliloquy( '69' ); }; ?>
+
+    <div class="textOverlay">
+           <h2><?php the_field('header_image_subhead'); ?></h2>
+           <h3 class="headerSubhead"><?php the_field('header_image_tagline'); ?></h3>
+           <button class="headBtn"><?php the_field('header_button'); ?></button>
+    </div> <!-- .textOverlay -->       
+  </div> <!-- .headerImg -->
+
+
   <div class="container">
 
     <div class="mainBody clearfix">
@@ -12,31 +25,31 @@
           <?php endwhile; ?>
         <?php endif; ?>   
       </div><!-- /.homeIntro -->
-
+    
       <div class="homeImages clearfix">
         <div class="homeTour">
           <div class="homeImgWrap"> 
-            <img src="http://localhost:8888/vineyard/wp-content/uploads/2014/10/grapes.jpg" alt="">
-            <h3>Take a Tour</h3>
+            <img src="<?php the_field('featured_img1'); ?>" alt="">
+            <h3><?php the_field('image_tagline'); ?></h3>
           </div> <!-- .homeImgWrap -->
-          <h4>Book Today</h4>
+          <?php the_field('bottom_link'); ?>
         </div><!-- /.homeTour -->
 
         <div class="homeHistory">
           <div class="homeImgWrap"> 
-            <img src="http://localhost:8888/vineyard/wp-content/uploads/2014/10/vineyardField.jpg" alt="">
-            <h3>Our History</h3>
-          </div> <!-- .homeImgWrap --> 
-          <h4>Then & Now</h4> 
-        </div><!-- /.homeHistory -->
-          
+            <img src="<?php the_field('featured_img2'); ?>" alt="">
+            <h3><?php the_field('image_tagline2'); ?></h3>
+          </div> <!-- .homeImgWrap -->
+          <?php the_field('bottom_link2'); ?>
+        </div><!-- /.homeTour -->
+
         <div class="homeWines">
           <div class="homeImgWrap"> 
-            <img src="http://localhost:8888/vineyard/wp-content/uploads/2014/10/wineBarrel.jpg" alt="">
-            <h3>The Wines</h3>
+            <img src="<?php the_field('featured_img3'); ?>" alt="">
+            <h3><?php the_field('image_tagline3'); ?></h3>
           </div> <!-- .homeImgWrap -->
-          <h4>Red & White</h4>  
-        </div><!-- /.homeWines -->
+          <?php the_field('bottom_link3'); ?>
+        </div><!-- /.homeTour -->
       </div> <!-- .homeImages -->
 
     </div> <!-- mainBody -->

@@ -1,6 +1,9 @@
 <?php /*Template Name: Wine Page*/ ?>
 
 <?php get_header();  ?>
+  <div class="generalPgHeader">
+    <img src="<?php header_image(); ?>" alt="" />
+  </div> <!-- .generalPgHeader -->
 
 <div class="main clearfix">
   <div class="container wine-types">

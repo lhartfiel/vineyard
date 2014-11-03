@@ -297,7 +297,6 @@ function get_post_parent($post) {
 // Custom header
 
 $defaults = array(
-	'height' => '550px',
 	'default-image' => get_template_directory_uri() . '/img/header.jpg',
 	'uploads' => true,
 	'header-text' => true,
@@ -305,20 +304,6 @@ $defaults = array(
 );
 add_theme_support( 'custom-header', $defaults );
 
-
-// For custom image size selection
-// if(function_exists('add_image_size')) {
-// 	add_image_size('new-size', 400, 300, true);
-// }
-// add_filter('image_size_names_choose', 'my_image_sizes');
-
-// function my_image_sizes($sizes) {
-// 	$addsizes = array(
-// 		"new-size" => __("New Size")
-// 	);
-// 	$newsizes = array_merge($sizes, $addsizes);
-// 	return $newsizes;
-// }
 
 // Featured Image Sizes
 add_theme_support ('post-thumbnails');

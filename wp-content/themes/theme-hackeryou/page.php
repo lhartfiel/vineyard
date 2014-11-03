@@ -1,4 +1,7 @@
 <?php get_header();  ?>
+<div class="generalPgHeader">
+  <img src="<?php header_image(); ?>" alt="" />
+</div>
 
 <div class="main clearfix">
   <div class="container">
